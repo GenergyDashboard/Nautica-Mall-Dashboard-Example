@@ -1,1 +1,135 @@
+name: Download Nautica Data
 
+on:
+  schedule:
+    # Run hourly from 05:00 to 21:00 SAST (03:00-19:00 UTC)
+    - cron: '0 3-19 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  download-and-process:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Africa/Johannesburg
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-nautica-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      
+      - name: Install dependencies
+        run: |
+          pip install playwright pandas openpyxl
+          playwright install chromium
+          playwright install-deps
+      
+      - name: Fix DNS resolution for FusionSolar
+        run: |
+          echo "--- Resolving FusionSolar DNS ---"
+          sudo apt-get install -y dnsutils > /dev/null 2>&1 || true
+          # GitHub Actions runners (Azure US) often fail to resolve intl.fusionsolar.huawei.com
+          # Try native resolution first, fall back to known IP
+          if ! nslookup intl.fusionsolar.huawei.com > /dev/null 2>&1; then
+            echo "DNS resolution failed - adding manual host entry"
+            # Resolve via Google DNS as primary fallback
+            RESOLVED_IP=$(dig +short intl.fusionsolar.huawei.com @8.8.8.8 | head -1)
+            if [ -z "$RESOLVED_IP" ]; then
+              # Hard fallback to known IP
+              RESOLVED_IP="119.8.160.213"
+              echo "Google DNS also failed - using known IP: $RESOLVED_IP"
+            else
+              echo "Resolved via Google DNS: $RESOLVED_IP"
+            fi
+            echo "$RESOLVED_IP intl.fusionsolar.huawei.com" | sudo tee -a /etc/hosts
+          else
+            echo "DNS resolution OK"
+          fi
+          # Verify connectivity
+          curl -sI --max-time 10 https://intl.fusionsolar.huawei.com || echo "Warning: HTTPS probe failed (may still work with Playwright)"
+      
+      - name: Create data directory
+        run: mkdir -p data
+      
+      - name: Download data with Playwright
+        env:
+          FUSIONSOLAR_USERNAME: ${{ secrets.FUSIONSOLAR_USERNAME }}
+          FUSIONSOLAR_PASSWORD: ${{ secrets.FUSIONSOLAR_PASSWORD }}
+        run: |
+          python download_nautica_data.py
+      
+      - name: Upload debug artifacts if download failed
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-artifacts
+          path: |
+            error_screenshot.png
+            error_page.html
+            01_login_page.png
+            02_after_login.png
+            03_portal_home.png
+            04_nautica_station.png
+            05_report_page.png
+          if-no-files-found: ignore
+      
+      - name: Process downloaded data
+        if: success()
+        run: python process_nautica_data.py
+      
+      - name: Fetch irradiation data
+        if: always()
+        run: python fetch_irradiation.py
+      
+      - name: Generate hashed credentials
+        if: always()
+        env:
+          CLIENT_USERNAME: ${{ secrets.CLIENT_USERNAME }}
+          CLIENT_PASSWORD: ${{ secrets.CLIENT_PASSWORD }}
+        run: |
+          mkdir -p config
+          python3 -c "
+          import hashlib, json, os
+          u = os.environ.get('CLIENT_USERNAME', '')
+          p = os.environ.get('CLIENT_PASSWORD', '')
+          if u and p:
+              creds = {
+                  'username_hash': hashlib.sha256(u.encode()).hexdigest(),
+                  'password_hash': hashlib.sha256(p.encode()).hexdigest()
+              }
+              with open('config/client_credentials.json', 'w') as f:
+                  json.dump(creds, f, indent=2)
+              print('✅ Hashed credentials generated')
+          else:
+              print('⚠️  CLIENT_USERNAME or CLIENT_PASSWORD secrets not set')
+          "
+      
+      - name: Commit and push if changed
+        if: always()
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/nautica_processed.json 2>/dev/null || true
+          git add data/starting_values.json 2>/dev/null || true
+          git add data/irradiation_data.json 2>/dev/null || true
+          git add data/hourly_generation.json 2>/dev/null || true
+          git add data/daily_history.json 2>/dev/null || true
+          git add data/daily_history_raw.json 2>/dev/null || true
+          git add config/client_credentials.json 2>/dev/null || true
+          git diff --staged --quiet || (git commit -m "Update Nautica data - $(date +'%Y-%m-%d %H:%M SAST')" && git pull --rebase origin main && git push)
