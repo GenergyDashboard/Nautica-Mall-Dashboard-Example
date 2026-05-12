@@ -4,6 +4,19 @@ process_nautica_data.py (DEMO VERSION)
 Applies boost factors at OUTPUT time only — starting_values.json
 always stores RAW data. Change PV_BOOST / LOAD_REDUCTION anytime
 and re-run to get new numbers cleanly.
+
+FIX (2026-05-12): daily history was loading from the BOOSTED output file
+instead of the RAW backup, causing the boost to compound on every run.
+Historical day-level values were being multiplied by PV_BOOST repeatedly,
+producing astronomical numbers (~1.3^N after N runs). Now loads from
+daily_history_raw.json — the true raw backup — and only applies boost
+once at write time, like every other dataset in this script.
+
+NOTE: If you're seeing this fix for the first time, delete both
+data/daily_history.json AND data/daily_history_raw.json before re-running.
+The existing files contain compounded data and there's no reliable way to
+un-boost them (we can't know how many times each day was multiplied).
+History will rebuild correctly going forward as days are scraped.
 """
 import json, sys, os, calendar
 from datetime import datetime, timezone, timedelta
@@ -175,7 +188,8 @@ def main():
     raw_file = data_dir / "nautica_raw.xlsx"
     starting_file = data_dir / "starting_values.json"
     output_file = data_dir / "nautica_processed.json"
-    daily_hist_file = data_dir / "daily_history.json"
+    daily_hist_file = data_dir / "daily_history.json"        # BOOSTED — dashboard reads this
+    daily_hist_raw_file = data_dir / "daily_history_raw.json"  # RAW — single source of truth
     hourly_file = data_dir / "hourly_generation.json"
 
     print("🔄 Processing Nautica data (DEMO)")
@@ -345,24 +359,64 @@ def main():
         with open(output_file, "w") as f: json.dump(output, f, indent=2)
     except Exception as e: print(f"⚠️  Hourly error: {e}")
 
-    # ── Daily history (RAW stored, boosted written for dashboard) ──
+    # ──────────────────────────────────────────────────────────────────
+    # Daily history (RAW stored, boosted written for dashboard)
+    #
+    # CRITICAL: load from daily_history_raw.json (the RAW backup), NOT
+    # daily_history.json (the BOOSTED dashboard file). Loading from the
+    # boosted file caused the boost to compound on every run — historical
+    # day-level values were being multiplied by PV_BOOST repeatedly, which
+    # is what produced the astronomical numbers in the dashboard charts.
+    # ──────────────────────────────────────────────────────────────────
     try:
-        raw_hist = json.load(open(daily_hist_file)) if daily_hist_file.exists() else {}
+        # Always read RAW from the raw backup file (not the boosted output)
+        if daily_hist_raw_file.exists():
+            raw_hist = json.load(open(daily_hist_raw_file))
+        else:
+            raw_hist = {}
+            print(f"  ℹ️  No raw history file found — starting fresh at {daily_hist_raw_file}")
+
+        # Sanity check: if any existing day looks like it was compounded
+        # (PV > 100k kWh is impossible for a 600 kWp system), warn loudly.
+        # We don't auto-purge — that's a manual decision the operator makes.
+        suspect_days = [d for d, rec in raw_hist.items()
+                        if isinstance(rec, dict) and rec.get('pv', 0) > 100000]
+        if suspect_days:
+            print(f"  ⚠️  WARNING: {len(suspect_days)} day(s) in raw history have PV > 100,000 kWh")
+            print(f"     This indicates corruption from the old compounding bug.")
+            print(f"     Delete data/daily_history_raw.json and data/daily_history.json")
+            print(f"     to recover. Earliest suspect day: {min(suspect_days)}")
+
+        # Add/overwrite today with raw data from this run
         raw_hist[today_str] = {
-            "current_hour": data_hour, "pv": round(daily_data.get("PV Yield (kWh)", 0), 2),
-            "import": round(daily_data.get("Import (kWh)", 0), 2), "export": round(daily_data.get("Export (kWh)", 0), 2),
-            "self_consumption": round(daily_data.get("Self-consumption (kWh)", 0), 2), "consumption": round(cons, 2),
-            "hourly": {"pv": hourly_arrays['pv'], "load": hourly_arrays['load'], "grid": hourly_arrays['import'], "export": hourly_arrays['export']}
+            "current_hour": data_hour,
+            "pv": round(daily_data.get("PV Yield (kWh)", 0), 2),
+            "import": round(daily_data.get("Import (kWh)", 0), 2),
+            "export": round(daily_data.get("Export (kWh)", 0), 2),
+            "self_consumption": round(daily_data.get("Self-consumption (kWh)", 0), 2),
+            "consumption": round(cons, 2),
+            "hourly": {
+                "pv": hourly_arrays['pv'],
+                "load": hourly_arrays['load'],
+                "grid": hourly_arrays['import'],
+                "export": hourly_arrays['export']
+            }
         }
+
+        # Prune to 365 days
         if len(raw_hist) > 365:
-            cd = (now - timedelta(days=365)).strftime("%Y-%m-%d"); raw_hist = {d: v for d, v in raw_hist.items() if d >= cd}
+            cd = (now - timedelta(days=365)).strftime("%Y-%m-%d")
+            raw_hist = {d: v for d, v in raw_hist.items() if d >= cd}
+
         # Save raw backup
-        json.dump(raw_hist, open(data_dir / "daily_history_raw.json", "w"), indent=2)
-        # Write boosted for dashboard
+        json.dump(raw_hist, open(daily_hist_raw_file, "w"), indent=2)
+
+        # Write boosted version for the dashboard to consume
         boosted_hist = {dk: apply_boost_daily_record(rec) for dk, rec in raw_hist.items()}
         json.dump(boosted_hist, open(daily_hist_file, "w"), indent=2)
         print(f"✅ Daily history: {len(boosted_hist)} days (raw backup + boosted output)")
-    except Exception as e: print(f"⚠️  History error: {e}"); import traceback; traceback.print_exc()
+    except Exception as e:
+        print(f"⚠️  History error: {e}"); import traceback; traceback.print_exc()
 
     # ── Save starting values (RAW — never boosted) ──
     starting["monthly"] = monthly; starting["lifetime"] = lifetime
