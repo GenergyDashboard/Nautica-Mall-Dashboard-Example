@@ -16,7 +16,7 @@ SAST = timezone(timedelta(hours=2))
 # DEMO BOOST — change anytime, re-run processor
 # ══════════════════════════════════════════════════
 PV_BOOST = 1.30
-LOAD_REDUCTION = 0.85
+LOAD_REDUCTION = 0.80
 
 def apply_boost(d):
     """Boost a monthly/daily totals dict. Returns NEW dict.
