@@ -28,7 +28,7 @@ SAST = timezone(timedelta(hours=2))
 # ══════════════════════════════════════════════════
 # DEMO BOOST — change anytime, re-run processor
 # ══════════════════════════════════════════════════
-PV_BOOST = 1.35
+PV_BOOST = 1.40
 LOAD_REDUCTION = 0.80
 
 def apply_boost(d):
