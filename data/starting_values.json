@@ -658,12 +658,12 @@
       "Self-consumption Rate (%)": 91.093
     },
     "2026-05": {
-      "PV Yield (kWh)": 22449.05,
-      "Inverter Yield (kWh)": 22449.05,
+      "PV Yield (kWh)": 22695.51,
+      "Inverter Yield (kWh)": 22695.51,
       "Export (kWh)": 2367.2,
-      "Import (kWh)": 38738.94,
-      "Consumption (kWh)": 58820.79,
-      "Self-consumption (kWh)": 20081.85,
+      "Import (kWh)": 39018.24,
+      "Consumption (kWh)": 59346.55,
+      "Self-consumption (kWh)": 20328.31,
       "CO\u2082 Avoided (t)": 0.0,
       "Standard Coal Saved (t)": 0.0,
       "Revenue (R.)": 3503.45,
@@ -673,7 +673,7 @@
       "Loss Due to Export Limitation (kWh)": 0.0,
       "Loss Due to Export Limitation(R.)": 0.0,
       "Peak Power (kW)": 0.0,
-      "Self-consumption Rate (%)": 89.455
+      "Self-consumption Rate (%)": 89.57
     }
   },
   "lifetime": {
@@ -732,12 +732,12 @@
       "Self-consumption Rate (%)": 86.48
     },
     "2026": {
-      "PV Yield (kWh)": 452808.194,
-      "Inverter Yield (kWh)": 452808.194,
+      "PV Yield (kWh)": 453054.654,
+      "Inverter Yield (kWh)": 453054.654,
       "Export (kWh)": 71769.667,
-      "Import (kWh)": 351641.296,
-      "Consumption (kWh)": 732679.824,
-      "Self-consumption (kWh)": 381038.528,
+      "Import (kWh)": 351920.596,
+      "Consumption (kWh)": 733205.584,
+      "Self-consumption (kWh)": 381284.988,
       "CO\u2082 Avoided (t)": 98.671,
       "Standard Coal Saved (t)": 83.091,
       "Revenue (R.)": 106368.308,
@@ -747,18 +747,18 @@
       "Loss Due to Export Limitation (kWh)": 0.0,
       "Loss Due to Export Limitation(R.)": 0.0,
       "Peak Power (kW)": 593.658,
-      "Self-consumption Rate (%)": 84.15
+      "Self-consumption Rate (%)": 84.159
     }
   },
   "last_updated": "2026-05-13",
   "last_run_date": "2026-05-13",
   "last_daily": {
-    "PV Yield (kWh)": 1878.62,
-    "Inverter Yield (kWh)": 1878.62,
+    "PV Yield (kWh)": 2125.08,
+    "Inverter Yield (kWh)": 2125.08,
     "Export (kWh)": 275.6,
-    "Import (kWh)": 1616.77,
-    "Consumption (kWh)": 3219.79,
-    "Self-consumption (kWh)": 1603.02,
+    "Import (kWh)": 1896.07,
+    "Consumption (kWh)": 3745.55,
+    "Self-consumption (kWh)": 1849.48,
     "CO\u2082 Avoided (t)": 0.0,
     "Standard Coal Saved (t)": 0.0,
     "Revenue (R.)": 407.89,
@@ -772,18 +772,18 @@
     "Global Irradiation (kWh/\u33a1)": 0.0,
     "Average Temperature(\u00b0C)": 0.0,
     "Theoretical Yield (kWh)": 0.0,
-    "PV Yield (kWh)": 1878.62,
-    "Inverter Yield (kWh)": 1878.62,
+    "PV Yield (kWh)": 2125.08,
+    "Inverter Yield (kWh)": 2125.08,
     "Export (kWh)": 275.6,
-    "Import (kWh)": 1616.77,
+    "Import (kWh)": 1896.07,
     "Loss Due to Export Limitation (kWh)": 0.0,
     "Loss Due to Export Limitation(R.)": 0.0,
     "Charge (kWh)": 0.0,
     "Discharge (kWh)": 0.0,
     "Revenue (R.)": 407.89,
-    "Consumption (kWh)": 3219.79,
-    "Self-consumption (kWh)": 1603.02,
-    "Self-consumption Rate (%)": 85.33
+    "Consumption (kWh)": 3745.55,
+    "Self-consumption (kWh)": 1849.48,
+    "Self-consumption Rate (%)": 87.03
   },
   "previous_today_date": "2026-05-13",
   "yesterday": {
