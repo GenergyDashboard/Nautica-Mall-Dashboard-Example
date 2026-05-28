@@ -20,8 +20,8 @@ from pathlib import Path
 
 
 # ── Configuration ──────────────────────────────────────────────────────────
-LATITUDE = -33.04416069960933,
-LONGITUDE = 18.05220351790642,
+LATITUDE = -33.04416069960933
+LONGITUDE = 18.05220351790642
 TIMEZONE = "Africa/Johannesburg"
 
 FORECAST_API = "https://api.open-meteo.com/v1/forecast"
