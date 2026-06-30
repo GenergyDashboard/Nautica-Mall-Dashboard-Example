@@ -1,6 +1,6 @@
 {
   "plant": "Nautica Shopping Centre",
-  "last_updated": "2026-06-30 20:28",
+  "last_updated": "2026-06-30 22:50",
   "yesterday": {
     "date": "2026-06-29",
     "data": {
@@ -894,7 +894,7 @@
     }
   },
   "hourly": {
-    "current_hour": 19,
+    "current_hour": 21,
     "pv": [
       0.0,
       0.0,
