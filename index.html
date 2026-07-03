@@ -6622,7 +6622,7 @@
             // Admin access: dashboard-url?admin=YOUR_ADMIN_KEY (never expires)
             const ACCESS_PROFILES = {
                 // 'code':  { name: 'Client Name', expires: 'YYYY-MM-DD' }
-                'GenergyDemoView': { name: 'GenergyDemoView', expires: '2026-07-10' },
+                'milprops2026': { name: 'Milprops', expires: '2026-04-03' },
                 // Add more: 'clientcode': { name: 'Some Client', expires: '2026-06-30' },
             };
             const ADMIN_KEY = 'genergy'; // Change this — your permanent access key
@@ -6662,16 +6662,21 @@
             }
 
             if (!granted) {
-                document.getElementById('loadingState').style.display = 'none';
-                document.body.innerHTML = `
-                    <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0a0a0f;color:#fff;font-family:'Segoe UI',Arial,sans-serif;">
-                        <div style="text-align:center;max-width:500px;padding:40px;">
-                            <div style="font-size:3em;margin-bottom:20px;">🔒</div>
-                            <h1 style="color:#FFD700;font-size:1.6em;margin-bottom:12px;">${accessCode && ACCESS_PROFILES[accessCode] ? 'Access Expired' : 'Access Required'}</h1>
-                            <p style="color:#94a3b8;font-size:1.05em;line-height:1.6;">${accessCode && ACCESS_PROFILES[accessCode] ? 'Your demo access period has ended.' : 'A valid access link is required to view this dashboard.'}</p>
-                            <p style="color:#475569;font-size:0.85em;margin-top:24px;">Contact Genergy for access — maintenance@genergy.co.za</p>
-                        </div>
-                    </div>`;
+                const el = document.getElementById('loadingState');
+                if (el) el.style.display = 'none';
+                const pv = document.getElementById('publicView');
+                if (pv) pv.style.display = 'none';
+                const cv = document.getElementById('clientView');
+                if (cv) cv.style.display = 'none';
+                const msg = (accessCode && ACCESS_PROFILES[accessCode]) ? 'Access Expired' : 'Access Required';
+                const sub = (accessCode && ACCESS_PROFILES[accessCode]) ? 'Your demo access period has ended.' : 'A valid access link is required to view this dashboard.';
+                document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0a0a0f;color:#fff;font-family:Segoe UI,Arial,sans-serif;">'
+                    + '<div style="text-align:center;max-width:500px;padding:40px;">'
+                    + '<div style="font-size:3em;margin-bottom:20px;">🔒</div>'
+                    + '<h1 style="color:#FFD700;font-size:1.6em;margin-bottom:12px;">' + msg + '</h1>'
+                    + '<p style="color:#94a3b8;font-size:1.05em;line-height:1.6;">' + sub + '</p>'
+                    + '<p style="color:#475569;font-size:0.85em;margin-top:24px;">Contact Genergy for access — maintenance@genergy.co.za</p>'
+                    + '</div></div>';
                 return;
             }
 
