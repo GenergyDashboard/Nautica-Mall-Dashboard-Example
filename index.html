@@ -6617,6 +6617,64 @@
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
+            // ── DEMO ACCESS PROFILES ──
+            // Add/remove client profiles here. Share link: dashboard-url?access=CODE
+            // Admin access: dashboard-url?admin=YOUR_ADMIN_KEY (never expires)
+            const ACCESS_PROFILES = {
+                // 'code':  { name: 'Client Name', expires: 'YYYY-MM-DD' }
+                'GenergyDemoView': { name: 'GenergyDemoView', expires: '2026-07-10' },
+                // Add more: 'clientcode': { name: 'Some Client', expires: '2026-06-30' },
+            };
+            const ADMIN_KEY = 'genergy'; // Change this — your permanent access key
+
+            const params = new URLSearchParams(window.location.search);
+            const accessCode = params.get('access');
+            const adminKey = params.get('admin');
+            const savedAccess = sessionStorage.getItem('demo-access');
+
+            let granted = false;
+            let clientName = '';
+
+            // Admin — always allowed
+            if (adminKey === ADMIN_KEY || sessionStorage.getItem('demo-admin') === 'true') {
+                granted = true;
+                clientName = 'Admin';
+                sessionStorage.setItem('demo-admin', 'true');
+            }
+            // Client access code in URL
+            else if (accessCode && ACCESS_PROFILES[accessCode]) {
+                const profile = ACCESS_PROFILES[accessCode];
+                const expiry = new Date(profile.expires + 'T23:59:59');
+                if (new Date() <= expiry) {
+                    granted = true;
+                    clientName = profile.name;
+                    sessionStorage.setItem('demo-access', accessCode);
+                }
+            }
+            // Returning client (same browser session)
+            else if (savedAccess && ACCESS_PROFILES[savedAccess]) {
+                const profile = ACCESS_PROFILES[savedAccess];
+                const expiry = new Date(profile.expires + 'T23:59:59');
+                if (new Date() <= expiry) {
+                    granted = true;
+                    clientName = profile.name;
+                }
+            }
+
+            if (!granted) {
+                document.getElementById('loadingState').style.display = 'none';
+                document.body.innerHTML = `
+                    <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0a0a0f;color:#fff;font-family:'Segoe UI',Arial,sans-serif;">
+                        <div style="text-align:center;max-width:500px;padding:40px;">
+                            <div style="font-size:3em;margin-bottom:20px;">🔒</div>
+                            <h1 style="color:#FFD700;font-size:1.6em;margin-bottom:12px;">${accessCode && ACCESS_PROFILES[accessCode] ? 'Access Expired' : 'Access Required'}</h1>
+                            <p style="color:#94a3b8;font-size:1.05em;line-height:1.6;">${accessCode && ACCESS_PROFILES[accessCode] ? 'Your demo access period has ended.' : 'A valid access link is required to view this dashboard.'}</p>
+                            <p style="color:#475569;font-size:0.85em;margin-top:24px;">Contact Genergy for access — maintenance@genergy.co.za</p>
+                        </div>
+                    </div>`;
+                return;
+            }
+
             isLoggedIn = true;
             showClientView();
             loadData().then(() => startAutoRefresh());
