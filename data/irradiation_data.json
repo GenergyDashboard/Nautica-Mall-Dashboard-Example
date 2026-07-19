@@ -2903,8 +2903,8 @@
         71.0,
         11.0,
         61.0,
-        4.0,
         0.0,
+        12.0,
         0.0,
         0.0,
         0.0,
@@ -2914,12 +2914,12 @@
         0.0
       ],
       "peak_wm2": 71.0,
-      "daily_total_wh_m2": 184.0,
-      "daily_total_kwh_m2": 0.184,
-      "sun_hours": 5
+      "daily_total_wh_m2": 192.0,
+      "daily_total_kwh_m2": 0.192,
+      "sun_hours": 6
     }
   },
-  "last_updated": "2026-07-19 20:45:50",
+  "last_updated": "2026-07-19 22:01:42",
   "monthly_summary": {
     "2026-02": {
       "days_recorded": 12,
