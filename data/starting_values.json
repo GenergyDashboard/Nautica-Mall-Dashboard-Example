@@ -694,12 +694,12 @@
       "Self-consumption Rate (%)": 96.847
     },
     "2026-07": {
-      "PV Yield (kWh)": 33781.26,
-      "Inverter Yield (kWh)": 33781.26,
+      "PV Yield (kWh)": 34034.74,
+      "Inverter Yield (kWh)": 34034.74,
       "Export (kWh)": 1396.8,
-      "Import (kWh)": 63027.5,
-      "Consumption (kWh)": 95411.96,
-      "Self-consumption (kWh)": 32384.46,
+      "Import (kWh)": 65254.45,
+      "Consumption (kWh)": 97892.39,
+      "Self-consumption (kWh)": 32637.94,
       "CO\u2082 Avoided (t)": 0.0,
       "Standard Coal Saved (t)": 0.0,
       "Revenue (R.)": 2067.24,
@@ -709,7 +709,7 @@
       "Loss Due to Export Limitation (kWh)": 0.0,
       "Loss Due to Export Limitation(R.)": 0.0,
       "Peak Power (kW)": 0.0,
-      "Self-consumption Rate (%)": 95.865
+      "Self-consumption Rate (%)": 95.896
     }
   },
   "lifetime": {
@@ -768,12 +768,12 @@
       "Self-consumption Rate (%)": 86.48
     },
     "2026": {
-      "PV Yield (kWh)": 562622.864,
-      "Inverter Yield (kWh)": 562622.864,
+      "PV Yield (kWh)": 562876.344,
+      "Inverter Yield (kWh)": 562876.344,
       "Export (kWh)": 76905.667,
-      "Import (kWh)": 562804.296,
-      "Consumption (kWh)": 1048521.494,
-      "Self-consumption (kWh)": 485717.198,
+      "Import (kWh)": 565031.246,
+      "Consumption (kWh)": 1051001.924,
+      "Self-consumption (kWh)": 485970.678,
       "CO\u2082 Avoided (t)": 98.671,
       "Standard Coal Saved (t)": 83.091,
       "Revenue (R.)": 113969.478,
@@ -783,18 +783,18 @@
       "Loss Due to Export Limitation (kWh)": 0.0,
       "Loss Due to Export Limitation(R.)": 0.0,
       "Peak Power (kW)": 593.658,
-      "Self-consumption Rate (%)": 86.331
+      "Self-consumption Rate (%)": 86.337
     }
   },
-  "last_updated": "2026-07-22",
-  "last_run_date": "2026-07-22",
+  "last_updated": "2026-07-23",
+  "last_run_date": "2026-07-23",
   "last_daily": {
-    "PV Yield (kWh)": 420.18999999999994,
-    "Inverter Yield (kWh)": 420.18999999999994,
+    "PV Yield (kWh)": 253.48000000000002,
+    "Inverter Yield (kWh)": 253.48000000000002,
     "Export (kWh)": 0.0,
-    "Import (kWh)": 2474.24,
-    "Consumption (kWh)": 2894.43,
-    "Self-consumption (kWh)": 420.19,
+    "Import (kWh)": 2226.9500000000003,
+    "Consumption (kWh)": 2480.43,
+    "Self-consumption (kWh)": 253.48,
     "CO\u2082 Avoided (t)": 0.0,
     "Standard Coal Saved (t)": 0.0,
     "Revenue (R.)": 0.0,
@@ -805,6 +805,24 @@
     "Loss Due to Export Limitation(R.)": 0.0
   },
   "previous_today": {
+    "Global Irradiation (kWh/\u33a1)": 0.0,
+    "Average Temperature(\u00b0C)": 0.0,
+    "Theoretical Yield (kWh)": 0.0,
+    "PV Yield (kWh)": 253.48000000000002,
+    "Inverter Yield (kWh)": 253.48000000000002,
+    "Export (kWh)": 0.0,
+    "Import (kWh)": 2226.9500000000003,
+    "Loss Due to Export Limitation (kWh)": 0.0,
+    "Loss Due to Export Limitation(R.)": 0.0,
+    "Charge (kWh)": 0.0,
+    "Discharge (kWh)": 0.0,
+    "Revenue (R.)": 0.0,
+    "Consumption (kWh)": 2480.43,
+    "Self-consumption (kWh)": 253.48,
+    "Self-consumption Rate (%)": 100.0
+  },
+  "previous_today_date": "2026-07-23",
+  "yesterday": {
     "Global Irradiation (kWh/\u33a1)": 0.0,
     "Average Temperature(\u00b0C)": 0.0,
     "Theoretical Yield (kWh)": 0.0,
@@ -821,23 +839,5 @@
     "Self-consumption (kWh)": 420.19,
     "Self-consumption Rate (%)": 100.0
   },
-  "previous_today_date": "2026-07-22",
-  "yesterday": {
-    "Global Irradiation (kWh/\u33a1)": 0.0,
-    "Average Temperature(\u00b0C)": 0.0,
-    "Theoretical Yield (kWh)": 0.0,
-    "PV Yield (kWh)": 2039.4900000000002,
-    "Inverter Yield (kWh)": 2039.4900000000002,
-    "Export (kWh)": 134.4,
-    "Import (kWh)": 2978.8100000000004,
-    "Loss Due to Export Limitation (kWh)": 0.0,
-    "Loss Due to Export Limitation(R.)": 0.0,
-    "Charge (kWh)": 0.0,
-    "Discharge (kWh)": 0.0,
-    "Revenue (R.)": 198.91,
-    "Consumption (kWh)": 4883.9,
-    "Self-consumption (kWh)": 1905.09,
-    "Self-consumption Rate (%)": 93.41
-  },
-  "yesterday_date": "2026-07-21"
+  "yesterday_date": "2026-07-22"
 }
