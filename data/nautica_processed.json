@@ -1,24 +1,24 @@
 {
   "plant": "Nautica Shopping Centre",
-  "last_updated": "2026-08-15 05:29",
+  "last_updated": "2026-08-15 06:19",
   "yesterday": {
-    "date": "2026-08-13",
+    "date": "2026-08-14",
     "data": {
       "Global Irradiation (kWh/\u33a1)": 0.0,
       "Average Temperature(\u00b0C)": 0.0,
       "Theoretical Yield (kWh)": 0.0,
-      "PV Yield (kWh)": 3369.97,
-      "Inverter Yield (kWh)": 3369.97,
-      "Export (kWh)": 54.88,
-      "Import (kWh)": 591.62,
+      "PV Yield (kWh)": 1910.82,
+      "Inverter Yield (kWh)": 1910.82,
+      "Export (kWh)": 6.72,
+      "Import (kWh)": 1911.69,
       "Loss Due to Export Limitation (kWh)": 0.0,
       "Loss Due to Export Limitation(R.)": 0.0,
       "Charge (kWh)": 0.0,
       "Discharge (kWh)": 0.0,
-      "Revenue (R.)": 81.23,
-      "Consumption (kWh)": 3906.7,
-      "Self-consumption (kWh)": 3315.09,
-      "Self-consumption Rate (%)": 98.37
+      "Revenue (R.)": 9.94,
+      "Consumption (kWh)": 3815.79,
+      "Self-consumption (kWh)": 1904.1,
+      "Self-consumption Rate (%)": 99.65
     }
   },
   "today": {
