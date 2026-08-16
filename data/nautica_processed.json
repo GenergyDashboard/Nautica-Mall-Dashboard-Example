@@ -1,6 +1,6 @@
 {
   "plant": "Nautica Shopping Centre",
-  "last_updated": "2026-08-16 15:23",
+  "last_updated": "2026-08-16 16:12",
   "yesterday": {
     "date": "2026-08-15",
     "data": {
@@ -35,7 +35,7 @@
       "Loss Due to Export Limitation(R.)": 0.0,
       "Charge (kWh)": 0.0,
       "Discharge (kWh)": 0.0,
-      "Revenue (R.)": 392.03,
+      "Revenue (R.)": 624.09,
       "Consumption (kWh)": 2558.66,
       "Self-consumption (kWh)": 1591.11,
       "Self-consumption Rate (%)": 79.05
@@ -52,7 +52,7 @@
       "Self-consumption (kWh)": 40835.77,
       "CO\u2082 Avoided (t)": 0.0,
       "Standard Coal Saved (t)": 0.0,
-      "Revenue (R.)": 6417.46,
+      "Revenue (R.)": 6649.52,
       "Charge (kWh)": 0.0,
       "Discharge (kWh)": 0.0,
       "Theoretical Yield (kWh)": 0.0,
@@ -783,7 +783,7 @@
       "Self-consumption (kWh)": 40835.77,
       "CO\u2082 Avoided (t)": 0.0,
       "Standard Coal Saved (t)": 0.0,
-      "Revenue (R.)": 6417.46,
+      "Revenue (R.)": 6649.52,
       "Charge (kWh)": 0.0,
       "Discharge (kWh)": 0.0,
       "Theoretical Yield (kWh)": 0.0,
@@ -857,7 +857,7 @@
       "Self-consumption (kWh)": 745411.42,
       "CO\u2082 Avoided (t)": 138.14,
       "Standard Coal Saved (t)": 116.33,
-      "Revenue (R.)": 168399.78,
+      "Revenue (R.)": 168631.85,
       "Charge (kWh)": 0.0,
       "Discharge (kWh)": 0.0,
       "Theoretical Yield (kWh)": 0.0,
@@ -876,7 +876,7 @@
     "Self-consumption (kWh)": 2826484.01,
     "CO\u2082 Avoided (t)": 1221.42,
     "Standard Coal Saved (t)": 1028.57,
-    "Revenue (R.)": 855650430.04,
+    "Revenue (R.)": 855650662.1,
     "Charge (kWh)": 0.0,
     "Discharge (kWh)": 0.0,
     "Theoretical Yield (kWh)": 0.0,
