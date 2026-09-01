@@ -1,6 +1,6 @@
 {
   "plant": "Nautica Shopping Centre",
-  "last_updated": "2026-09-01 19:31",
+  "last_updated": "2026-09-01 22:15",
   "yesterday": {
     "date": "2026-08-31",
     "data": {
@@ -36,7 +36,7 @@
       "Charge (kWh)": 0.0,
       "Discharge (kWh)": 0.0,
       "Revenue (R.)": 1096.49,
-      "Consumption (kWh)": 2384.75,
+      "Consumption (kWh)": 2644.44,
       "Self-consumption (kWh)": 3023.22,
       "Self-consumption Rate (%)": 80.32
     }
@@ -48,7 +48,7 @@
       "Inverter Yield (kWh)": 3764.1,
       "Export (kWh)": 740.88,
       "Import (kWh)": 0,
-      "Consumption (kWh)": 2384.75,
+      "Consumption (kWh)": 2644.44,
       "Self-consumption (kWh)": 3023.22,
       "CO\u2082 Avoided (t)": 0.0,
       "Standard Coal Saved (t)": 0.0,
@@ -797,7 +797,7 @@
       "Inverter Yield (kWh)": 3764.1,
       "Export (kWh)": 740.88,
       "Import (kWh)": 0,
-      "Consumption (kWh)": 2384.75,
+      "Consumption (kWh)": 2644.44,
       "Self-consumption (kWh)": 3023.22,
       "CO\u2082 Avoided (t)": 0.0,
       "Standard Coal Saved (t)": 0.0,
@@ -871,7 +871,7 @@
       "Inverter Yield (kWh)": 915596.55,
       "Export (kWh)": 123237.61,
       "Import (kWh)": 204350.12,
-      "Consumption (kWh)": 986407.34,
+      "Consumption (kWh)": 986667.03,
       "Self-consumption (kWh)": 792358.93,
       "CO\u2082 Avoided (t)": 138.14,
       "Standard Coal Saved (t)": 116.33,
@@ -890,7 +890,7 @@
     "Inverter Yield (kWh)": 3196188.74,
     "Export (kWh)": 322757.21,
     "Import (kWh)": 688938.13,
-    "Consumption (kWh)": 3450034.57,
+    "Consumption (kWh)": 3450294.26,
     "Self-consumption (kWh)": 2873431.52,
     "CO\u2082 Avoided (t)": 1221.42,
     "Standard Coal Saved (t)": 1028.57,
@@ -948,7 +948,7 @@
     }
   },
   "hourly": {
-    "current_hour": 18,
+    "current_hour": 20,
     "pv": [
       0.0,
       0.0,
@@ -995,8 +995,8 @@
       222.07,
       206.2,
       167.15,
-      0.0,
-      0.0,
+      139.26,
+      120.42,
       0.0,
       0.0,
       0.0
@@ -1021,8 +1021,8 @@
       0,
       124.55,
       157.41,
-      0,
-      0,
+      139.26,
+      120.42,
       0,
       0,
       0
@@ -1073,8 +1073,8 @@
       222.07,
       206.2,
       167.15,
-      0.0,
-      0.0,
+      139.26,
+      120.42,
       0.0,
       0.0,
       0.0
@@ -1099,8 +1099,8 @@
       82.94,
       199.43,
       201.98,
-      0.0,
-      0.0,
+      174.08,
+      150.53,
       0.0,
       0.0,
       0.0
