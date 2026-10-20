@@ -748,12 +748,12 @@
       "Self-consumption Rate (%)": 83.224
     },
     "2026-10": {
-      "PV Yield (kWh)": 66727.33,
-      "Inverter Yield (kWh)": 66727.33,
+      "PV Yield (kWh)": 67045.83,
+      "Inverter Yield (kWh)": 67045.83,
       "Export (kWh)": 17626.0,
-      "Import (kWh)": 39170.81,
-      "Consumption (kWh)": 88272.14,
-      "Self-consumption (kWh)": 49101.33,
+      "Import (kWh)": 40446.97,
+      "Consumption (kWh)": 89866.8,
+      "Self-consumption (kWh)": 49419.83,
       "CO\u2082 Avoided (t)": 0.0,
       "Standard Coal Saved (t)": 0.0,
       "Revenue (R.)": 26086.48,
@@ -763,7 +763,7 @@
       "Loss Due to Export Limitation (kWh)": 0.0,
       "Loss Due to Export Limitation(R.)": 0.0,
       "Peak Power (kW)": 0.0,
-      "Self-consumption Rate (%)": 73.585
+      "Self-consumption Rate (%)": 73.711
     }
   },
   "lifetime": {
@@ -822,12 +822,12 @@
       "Self-consumption Rate (%)": 86.48
     },
     "2026": {
-      "PV Yield (kWh)": 794950.864,
-      "Inverter Yield (kWh)": 794950.864,
+      "PV Yield (kWh)": 795269.364,
+      "Inverter Yield (kWh)": 795269.364,
       "Export (kWh)": 118026.867,
-      "Import (kWh)": 777739.566,
-      "Consumption (kWh)": 1454663.564,
-      "Self-consumption (kWh)": 676923.998,
+      "Import (kWh)": 779015.726,
+      "Consumption (kWh)": 1456258.224,
+      "Self-consumption (kWh)": 677242.498,
       "CO\u2082 Avoided (t)": 98.671,
       "Standard Coal Saved (t)": 83.091,
       "Revenue (R.)": 174828.848,
@@ -837,21 +837,21 @@
       "Loss Due to Export Limitation (kWh)": 0.0,
       "Loss Due to Export Limitation(R.)": 0.0,
       "Peak Power (kW)": 593.658,
-      "Self-consumption Rate (%)": 85.153
+      "Self-consumption Rate (%)": 85.159
     }
   },
-  "last_updated": "2026-10-19",
-  "last_run_date": "2026-10-19",
+  "last_updated": "2026-10-20",
+  "last_run_date": "2026-10-20",
   "last_daily": {
-    "PV Yield (kWh)": 3541.68,
-    "Inverter Yield (kWh)": 3541.68,
-    "Export (kWh)": 830.0,
-    "Import (kWh)": 2151.68,
-    "Consumption (kWh)": 4863.36,
-    "Self-consumption (kWh)": 2711.68,
+    "PV Yield (kWh)": 318.5,
+    "Inverter Yield (kWh)": 318.5,
+    "Export (kWh)": 0.0,
+    "Import (kWh)": 1276.16,
+    "Consumption (kWh)": 1594.66,
+    "Self-consumption (kWh)": 318.5,
     "CO\u2082 Avoided (t)": 0.0,
     "Standard Coal Saved (t)": 0.0,
-    "Revenue (R.)": 1228.3999999999999,
+    "Revenue (R.)": 0.0,
     "Charge (kWh)": 0.0,
     "Discharge (kWh)": 0.0,
     "Theoretical Yield (kWh)": 0.0,
@@ -859,6 +859,24 @@
     "Loss Due to Export Limitation(R.)": 0.0
   },
   "previous_today": {
+    "Global Irradiation (kWh/\u33a1)": 0.0,
+    "Average Temperature(\u00b0C)": 0.0,
+    "Theoretical Yield (kWh)": 0.0,
+    "PV Yield (kWh)": 318.5,
+    "Inverter Yield (kWh)": 318.5,
+    "Export (kWh)": 0.0,
+    "Import (kWh)": 1276.16,
+    "Loss Due to Export Limitation (kWh)": 0.0,
+    "Loss Due to Export Limitation(R.)": 0.0,
+    "Charge (kWh)": 0.0,
+    "Discharge (kWh)": 0.0,
+    "Revenue (R.)": 0.0,
+    "Consumption (kWh)": 1594.66,
+    "Self-consumption (kWh)": 318.5,
+    "Self-consumption Rate (%)": 100.0
+  },
+  "previous_today_date": "2026-10-20",
+  "yesterday": {
     "Global Irradiation (kWh/\u33a1)": 0.0,
     "Average Temperature(\u00b0C)": 0.0,
     "Theoretical Yield (kWh)": 0.0,
@@ -875,23 +893,5 @@
     "Self-consumption (kWh)": 2711.68,
     "Self-consumption Rate (%)": 76.56
   },
-  "previous_today_date": "2026-10-19",
-  "yesterday": {
-    "Global Irradiation (kWh/\u33a1)": 0.0,
-    "Average Temperature(\u00b0C)": 0.0,
-    "Theoretical Yield (kWh)": 0.0,
-    "PV Yield (kWh)": 3029.1400000000003,
-    "Inverter Yield (kWh)": 3029.1400000000003,
-    "Export (kWh)": 692.8,
-    "Import (kWh)": 1662.4699999999998,
-    "Loss Due to Export Limitation (kWh)": 0.0,
-    "Loss Due to Export Limitation(R.)": 0.0,
-    "Charge (kWh)": 0.0,
-    "Discharge (kWh)": 0.0,
-    "Revenue (R.)": 1025.33,
-    "Consumption (kWh)": 3998.81,
-    "Self-consumption (kWh)": 2336.34,
-    "Self-consumption Rate (%)": 77.13
-  },
-  "yesterday_date": "2026-10-18"
+  "yesterday_date": "2026-10-19"
 }
